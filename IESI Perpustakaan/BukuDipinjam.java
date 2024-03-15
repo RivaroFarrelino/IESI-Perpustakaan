@@ -1,6 +1,6 @@
 public class BukuDipinjam {
     private Buku buku;
-    private int lamaPinjam;
+    private int lamaPinjam; 
 
     public BukuDipinjam(Buku buku, int lamaPinjam) {
         this.buku = buku;

@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class PencarianController{
     
     public void showFormPencarian(){
-        Perpustakaan.formPencarian = new FormPencarian();
-        Perpustakaan.formPencarian.tampil();
+        FormPencarian formPencarian = new FormPencarian();
+        formPencarian.tampil();
     }
 
     public ArrayList<Buku> cariBuku(String judul){

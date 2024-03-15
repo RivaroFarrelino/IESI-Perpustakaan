@@ -115,6 +115,7 @@ public class FormPeminjaman extends JDialog {
 
     private Buku cariBuku(String judulBuku) {
         // Mencari buku berdasarkan judul
+        BukuProvider bukuProvider = new BukuProvider();
         if (daftarBuku.containsKey(judulBuku)) {
             return daftarBuku.get(judulBuku);
         } else {

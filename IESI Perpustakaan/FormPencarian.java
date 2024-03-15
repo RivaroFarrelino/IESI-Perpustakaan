@@ -10,7 +10,7 @@ public class FormPencarian extends javax.swing.JFrame {
 
     private TextFieldBorder keywordJudul;
     private ButtonActionListener tombolCari;
-    private TableUI table;
+    private TableUI tableBuku;
     
     public void tampil(){
         // Mencegah app exit ketika di closed

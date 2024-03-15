@@ -11,7 +11,7 @@ public class DialogUI extends javax.swing.JFrame {
 
     public DialogUI(String message){
         this();
-        jLabelMessage.setText(message); 
+        this.message.setText(message); 
     }
 
     public void setMessage(String message){
