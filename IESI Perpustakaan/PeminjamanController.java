@@ -1,4 +1,8 @@
+import java.util.HashMap;
+
 public class PeminjamanController {
+    private static HashMap<String, Buku> daftarBuku = new HashMap<>(); // Simpan data buku
+    
     public void showFormPeminjaman(){
         Perpustakaan.formPeminjaman = new FormPeminjaman();
         Perpustakaan.formPeminjaman.tampil();
@@ -9,7 +13,7 @@ public class PeminjamanController {
         bukuProvider.selectBuku(judul);
     }
 
-    public  pinjam (String BukuDipinjam[]) {
+    public pinjam (String BukuDipinjam[]) {
 
     }
 }
