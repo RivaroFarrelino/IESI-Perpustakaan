@@ -1,71 +1,61 @@
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
-
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.plaf.TableUI;
-import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
-import javax.swing.plaf.metal.MetalBorders.TextFieldBorder;
-import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 public class FormPencarian extends JFrame implements ActionListener {
-
     private JTextField keywordJudul;
     private JButton tombolCari;
     private JTable tableBuku;
+    private DefaultTableModel tableModel;
 
-    public FormPencarian(){
+    public FormPencarian() {
         initComponents();
     }
 
-    private void initComponents(){
-        keywordJudul = new JTextField();
+    private void initComponents() {
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setTitle("Form Pencarian Buku");
+        setSize(600, 400);
+
+        keywordJudul = new JTextField(20);
         tombolCari = new JButton("Search");
-        tableBuku = new JTable();
+        tableModel = new DefaultTableModel();
+        tableBuku = new JTable(tableModel);
 
         tombolCari.addActionListener(this);
+
+        getContentPane().setLayout(new java.awt.FlowLayout());
+        getContentPane().add(keywordJudul);
+        getContentPane().add(tombolCari);
+        getContentPane().add(tableBuku);
+
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-    }
-    
-    public void tampil(){
-        // Mencegah app exit ketika di closed
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        //set location to center screen
-        this.pack();
-        this.setLocationRelativeTo(null);
-
-        //Show User
-        this.setVisible(true);
+        String judul = keywordJudul.getText();
+        ArrayList<Buku> listBuku = Perpustakaan.bukuProvider.selectBuku(judul);
+        display(listBuku);
     }
 
-    public void display(ArrayList<Buku> listBuku){
-        Object[] kolom = {"Judul"}; // Mendefinisikan kolom judul
-        
-        // buat model tabel, 0 adalah jumlah baris sementara
-        DefaultTableModel model = new DefaultTableModel(kolom, 0);
-
-        // loop array list buku, konversi menjadi array objek baris
-        for(Buku buku : bukuList) {
-            Object[] baris = { buku.judul };
-            // masukkan tiap objek baris ke dalam model
-            model.addRow(baris);
+    public void display(ArrayList<Buku> listBuku) {
+        tableModel.setRowCount(0);
+        Object[] kolom = { "Judul" };
+        tableModel.setColumnIdentifiers(kolom);
+        for (Buku buku : listBuku) {
+            Object[] baris = { buku.getJudul() };
+            tableModel.addRow(baris);
         }
-        // set model tabel ke dalam JTable
-        jTableBuku.setModel(model);
     }
 
-    
-
+    public void tampil() {
+        setVisible(true);
+    }
 }

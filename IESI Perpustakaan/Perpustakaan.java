@@ -7,12 +7,13 @@ public class Perpustakaan {
 
     public static void main(String[] args) {
         
-        Perpustakaan.halamanUtamaUI = new HalamanUtamaUI();
+        HalamanUtamaUI halamanUtamaUI = new HalamanUtamaUI();
 
-        Perpustakaan.halamanUtamaUI.pack();
-        Perpustakaan.halamanUtamaUI.setLocationRelativeTo(null);
+        halamanUtamaUI.pack();
+        halamanUtamaUI.setLocationRelativeTo(null);
+        halamanUtamaUI.setVisible(true);
 
-        Perpustakaan.halamanUtamaUI.setVisible(true);
+        controllerPencarian = new PencarianController();
         
     }
 }

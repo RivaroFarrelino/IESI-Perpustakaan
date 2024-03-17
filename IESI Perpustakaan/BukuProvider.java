@@ -15,14 +15,16 @@ public class BukuProvider {
         bukuCollection.add(new Buku("The Adventure of Sherlock Holmes"));
     }
 
-    public ArrayList<Buku> selectBuku(String judul){
+    public ArrayList<Buku> selectBuku(String judul) {
         ArrayList<Buku> foundBuku = new ArrayList<>();
-        for(Buku buku : this.bukuCollection){
-            if(buku.getJudul().contains(judul)){
+        for (Buku buku : bukuCollection) {
+            if (buku.getJudul().toLowerCase().contains(judul.toLowerCase())) {
                 foundBuku.add(buku);
             }
         }
         return foundBuku;
+        
     }
+    
 
 }

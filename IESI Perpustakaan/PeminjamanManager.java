@@ -1,6 +1,6 @@
-public class PeminjamanManager {
+// public class PeminjamanManager {
     
-    public Boolean save(BukuDipinjam bukuDipinjam){
+//     public Boolean save(BukuDipinjam bukuDipinjam){
         
-    }
-}
+//     }
+// }
