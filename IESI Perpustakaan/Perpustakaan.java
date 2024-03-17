@@ -7,9 +7,9 @@ public class Perpustakaan {
 
     public static void main(String[] args) {
         
+        bukuProvider = new BukuProvider();
         HalamanUtamaUI halamanUtamaUI = new HalamanUtamaUI();
 
-        halamanUtamaUI.pack();
         halamanUtamaUI.setLocationRelativeTo(null);
         halamanUtamaUI.setVisible(true);
 

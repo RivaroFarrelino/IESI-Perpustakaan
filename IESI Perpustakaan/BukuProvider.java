@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.logging.Logger;
+
 
 public class BukuProvider {
+    private static final Logger logger = Logger.getLogger(BukuProvider.class.getName());
 
     private ArrayList<Buku> bukuCollection;
 
@@ -17,11 +20,13 @@ public class BukuProvider {
 
     public ArrayList<Buku> selectBuku(String judul) {
         ArrayList<Buku> foundBuku = new ArrayList<>();
+        
         for (Buku buku : bukuCollection) {
             if (buku.getJudul().toLowerCase().contains(judul.toLowerCase())) {
                 foundBuku.add(buku);
             }
         }
+        logger.info("Jumlah buku ditemukan: " + foundBuku.size());
         return foundBuku;
         
     }
