@@ -1,17 +1,17 @@
 public class BukuDipinjam {
+    private int lama;
     private Buku buku;
-    private int lamaPinjam; 
 
-    public BukuDipinjam(Buku buku, int lamaPinjam) {
+    public BukuDipinjam(Buku buku, int lama) {
+        this.lama = lama;
         this.buku = buku;
-        this.lamaPinjam = lamaPinjam;
+    }
+
+    public int getLamaPinjam() {
+        return lama;
     }
 
     public Buku getBuku() {
         return buku;
-    }
-
-    public int getLamaPinjam() {
-        return lamaPinjam;
     }
 }

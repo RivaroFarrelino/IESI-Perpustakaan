@@ -1,19 +1,37 @@
-// import java.util.HashMap;
+import java.util.ArrayList;
 
-// public class PeminjamanController {
-//     private static HashMap<String, Buku> daftarBuku = new HashMap<>(); // Simpan data buku
-    
-//     public void showFormPeminjaman(){
-//         Perpustakaan.formPeminjaman = new FormPeminjaman();
-//         Perpustakaan.formPeminjaman.tampil();
-//     }    
+public class PeminjamanController {
+    ArrayList<Buku> listBuku;
 
-//     public ArrayList<Buku> cariBuku(String judul){
-//         BukuProvider bukuProvider = new BukuProvider();
-//         bukuProvider.selectBuku(judul);
-//     }
+    public void showFormPeminjamn() {
+        FormPeminjaman formPeminjaman = new FormPeminjaman();
+        formPeminjaman.tampil();
+    }
 
-//     public pinjam (String BukuDipinjam[]) {
+    public void cariBuku(String judul) {
+        BukuProvider bukuProvider = new BukuProvider();
+        ArrayList<Buku> hasilPencarian = bukuProvider.selectBuku(judul);
 
-//     }
-// }
+        if (hasilPencarian.isEmpty()) {
+            DialogUI dialog = new DialogUI("Buku belum terdaftar!");
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        } else {
+            FormPeminjaman formPeminjaman = new FormPeminjaman();
+            formPeminjaman.display(hasilPencarian);
+        }
+    }
+
+    public void pinjam(ArrayList<BukuDipinjam> bukuDipinjam) {
+        PeminjamanManager peminjamanManager = new PeminjamanManager();
+        boolean berhasil = peminjamanManager.simpan(bukuDipinjam);
+
+        if (berhasil) {
+            DialogUI dialog = new DialogUI("Berhasil meminjam buku");
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        }
+    }
+}

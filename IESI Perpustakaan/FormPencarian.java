@@ -34,12 +34,12 @@ public class FormPencarian extends JFrame implements ActionListener {
         tableModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Membuat sel tidak dapat diedit
+                return false;
             }
         };
         tableModel.addColumn("Judul");
         tableBuku = new JTable(tableModel);
-        tableBuku.setEnabled(false); // Mengatur tabel tidak dapat diedit
+        tableBuku.setEnabled(false);
 
         JPanel panelInput = new JPanel();
         panelInput.add(labelJudul);
@@ -47,7 +47,7 @@ public class FormPencarian extends JFrame implements ActionListener {
         panelInput.add(tombolCari);
 
         JPanel panelHasil = new JPanel(new BorderLayout());
-        panelHasil.add(new JLabel("Hasil Pencarian:"), BorderLayout.NORTH); // Mini heading "Hasil Pencarian"
+        panelHasil.add(new JLabel("Hasil Pencarian:"), BorderLayout.NORTH);
         panelHasil.add(tableBuku, BorderLayout.CENTER);
 
         getContentPane().setLayout(new BorderLayout());

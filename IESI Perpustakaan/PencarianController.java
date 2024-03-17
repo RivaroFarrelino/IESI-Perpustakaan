@@ -15,7 +15,7 @@ public class PencarianController {
             Perpustakaan.formPencarian.display(listBuku);
         } catch (Exception ex) {
             System.err.println("Error saat mencari buku: " + ex.getMessage());
-            ex.printStackTrace(); // Print stack trace untuk melihat detail exception
+            ex.printStackTrace(); 
         }
         return listBuku;
     }
