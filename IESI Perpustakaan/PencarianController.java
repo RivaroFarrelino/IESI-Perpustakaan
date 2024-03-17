@@ -1,24 +1,27 @@
+import java.awt.List;
 import java.util.ArrayList;
 
-public class PencarianController{
-    
-    public void showFormPencarian(){
+public class PencarianController {
+    ArrayList<Buku> listBuku;
+
+    public void showFormPencarian() {
         FormPencarian formPencarian = new FormPencarian();
         formPencarian.tampil();
     }
 
     public ArrayList<Buku> cariBuku(String judul){
         BukuProvider bukuProvider = new BukuProvider();
-        bukuProvider.selectBuku(judul);
-        if(!listBuku.isEmpty()) {
+        try {
+            listBuku = bukuProvider.selectBuku(judul);
             Perpustakaan.formPencarian.display(listBuku);
-        } else {
-            // list buku kosong, maka...
-            DialogUI dialogUI = new DialogUI("Buku tidak terdaftar");
+        } catch(Exception ex) {
+            // jika terjadi koneksi error pada saat select
+            DialogUI dialogUI = new DialogUI("Connection Error");
             dialogUI.pack();
             dialogUI.setLocationRelativeTo(null);
             dialogUI.setVisible(true);
         }
+        return listBuku;
             
     }
 
