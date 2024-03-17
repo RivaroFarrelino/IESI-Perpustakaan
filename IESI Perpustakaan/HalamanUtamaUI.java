@@ -50,10 +50,5 @@ public class HalamanUtamaUI extends JFrame {
         setJMenuBar(menuBar);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            HalamanUtamaUI halamanUtamaUI = new HalamanUtamaUI();
-            halamanUtamaUI.setVisible(true);
-        });
-    }
+    
 }
