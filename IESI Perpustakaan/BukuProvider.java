@@ -20,6 +20,9 @@ public class BukuProvider {
         bukuCollection.add(new Buku("Harry Potter"));
         bukuCollection.add(new Buku("Laskar Pelangi"));
         bukuCollection.add(new Buku("Atomic Habit"));
+        bukuCollection.add(new Buku("Marmut Merah Jambu"));
+        bukuCollection.add(new Buku("Pecahkan NYC"));
+        bukuCollection.add(new Buku("Chasing the Last Laugh"));
 
     }
 
