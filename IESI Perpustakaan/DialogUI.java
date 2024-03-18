@@ -25,7 +25,8 @@ public class DialogUI extends JFrame {
 
         jButtonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jButtonOKActionPerformed(evt);
+                jButtonOKActionPerformed1(evt);
+                jButtonOKActionPerformed2(evt);
             }
         });
 
@@ -58,10 +59,16 @@ public class DialogUI extends JFrame {
         pack();
     }
 
-    private void jButtonOKActionPerformed(ActionEvent evt) {
+    private void jButtonOKActionPerformed1(ActionEvent evt) {
         String judul = JTextFieldJudul.getText();
         ArrayList<Buku> listBuku = Perpustakaan.controllerPencarian.cariBuku(judul);
         Perpustakaan.formPencarian.display(listBuku);
         dispose();
     }
+
+    private void jButtonOKActionPerformed2(ActionEvent evt) {
+        String judul = JTextFieldJudul.getText();
+        Perpustakaan.peminjamanController.cariBuku(judul);
+        dispose();
+    } 
 }
