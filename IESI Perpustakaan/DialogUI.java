@@ -62,6 +62,6 @@ public class DialogUI extends JFrame {
         String judul = JTextFieldJudul.getText();
         ArrayList<Buku> listBuku = Perpustakaan.controllerPencarian.cariBuku(judul);
         Perpustakaan.formPencarian.display(listBuku);
-        dispose(); // Tutup jendela dialog setelah selesai pencarian
+        dispose();
     }
 }
