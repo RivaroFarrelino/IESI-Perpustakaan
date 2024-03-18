@@ -13,7 +13,6 @@ public class Perpustakaan {
         bukuProvider = new BukuProvider();
         HalamanUtamaUI halamanUtamaUI = new HalamanUtamaUI();
 
-        halamanUtamaUI.pack();
         halamanUtamaUI.setLocationRelativeTo(null);
         halamanUtamaUI.setVisible(true);
 
