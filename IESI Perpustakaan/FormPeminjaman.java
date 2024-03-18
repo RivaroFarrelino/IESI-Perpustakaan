@@ -108,6 +108,13 @@ public class FormPeminjaman extends JFrame implements ActionListener {
                     return;
                 }
 
+                // Tambahkan validasi maksimal 3 hari
+                if (lamaPinjam > 3) {
+                    JOptionPane.showMessageDialog(this, "Maksimal lama peminjaman adalah 3 hari.", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 Buku selectedBook = null;
                 for (Buku buku : Perpustakaan.bukuProvider.selectBuku(judulBuku)) {
                     if (buku.getJudul().equals(judulBuku)) {
