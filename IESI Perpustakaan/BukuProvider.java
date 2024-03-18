@@ -16,6 +16,11 @@ public class BukuProvider {
         bukuCollection.add(new Buku("Thomas and Friends"));
         bukuCollection.add(new Buku("The Return of Sherlock Holmes"));
         bukuCollection.add(new Buku("The Adventure of Sherlock Holmes"));
+        bukuCollection.add(new Buku("Bumi Manusia"));
+        bukuCollection.add(new Buku("Harry Potter"));
+        bukuCollection.add(new Buku("Laskar Pelangi"));
+        bukuCollection.add(new Buku("Atomic Habit"));
+
     }
 
     public ArrayList<Buku> selectBuku(String judul) {
