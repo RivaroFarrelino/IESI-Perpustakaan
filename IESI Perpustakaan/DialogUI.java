@@ -69,6 +69,6 @@ public class DialogUI extends JFrame {
     private void jButtonOKActionPerformed2(ActionEvent evt) {
         String judul = JTextFieldJudul.getText();
         Perpustakaan.peminjamanController.cariBuku(judul);
-        dispose();
+        dispose(); 
     } 
 }
