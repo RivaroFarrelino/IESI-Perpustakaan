@@ -86,7 +86,7 @@ public class FormPeminjaman extends JFrame implements ActionListener {
 
         setSize(480, 580);
         setLocationRelativeTo(null);
-        
+
     }
 
     @Override
@@ -131,7 +131,6 @@ public class FormPeminjaman extends JFrame implements ActionListener {
                 String judulBuku = (String) daftarPinjaman.getValueAt(selectedRow, 0);
                 int lamaPinjam = (int) daftarPinjaman.getValueAt(selectedRow, 1);
 
-                // Cari buku yang sesuai di dalam daftar pinjaman
                 for (BukuDipinjam buku : book) {
                     if (buku.getBuku().getJudul().equals(judulBuku) && buku.getLamaPinjam() == lamaPinjam) {
                         hapusBuku(buku);

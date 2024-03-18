@@ -27,9 +27,6 @@ public class BukuProvider {
             }
         }
         logger.info("Jumlah buku ditemukan: " + foundBuku.size());
-        return foundBuku;
-        
+        return foundBuku;   
     }
-    
-
 }
