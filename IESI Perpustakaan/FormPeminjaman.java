@@ -107,7 +107,6 @@ public class FormPeminjaman extends JFrame implements ActionListener {
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-
                 if (lamaPinjam > 3) {
                     JOptionPane.showMessageDialog(this, "Maksimal lama peminjaman adalah 3 hari.", "Error",
                             JOptionPane.ERROR_MESSAGE);
