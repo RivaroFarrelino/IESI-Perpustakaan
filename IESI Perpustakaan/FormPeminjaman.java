@@ -23,10 +23,12 @@ public class FormPeminjaman extends JFrame implements ActionListener {
     private JTextField lama;
     private DefaultTableModel tableModel;
     private ArrayList<BukuDipinjam> book;
+    private int jumlahPeminjaman;
 
     public FormPeminjaman() {
         initComponents();
         book = new ArrayList<>();
+        jumlahPeminjaman = 0;
     }
 
     private void initComponents() {
@@ -86,7 +88,6 @@ public class FormPeminjaman extends JFrame implements ActionListener {
 
         setSize(480, 580);
         setLocationRelativeTo(null);
-
     }
 
     @Override
@@ -172,8 +173,22 @@ public class FormPeminjaman extends JFrame implements ActionListener {
     }
 
     public void tambahBuku(Buku buku, int lama) {
-        book.add(new BukuDipinjam(buku, lama));
-        this.tampilPinjaman(book);
+        for (BukuDipinjam bukuDipinjam : book) {
+            if (bukuDipinjam.getBuku().getJudul().equals(buku.getJudul())) {
+                JOptionPane.showMessageDialog(this, "Buku sudah ada dalam daftar peminjaman.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        if (jumlahPeminjaman < 10) {
+            book.add(new BukuDipinjam(buku, lama));
+            jumlahPeminjaman++;
+            this.tampilPinjaman(book);
+        } else {
+            JOptionPane.showMessageDialog(this, "Maksimum peminjaman buku telah dicapai (10 buku).", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public void tampil() {
