@@ -86,7 +86,6 @@ public class FormPeminjaman extends JFrame implements ActionListener {
 
         setSize(480, 580);
         setLocationRelativeTo(null);
-
     }
 
     @Override
