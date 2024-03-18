@@ -1,6 +1,7 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -62,7 +63,11 @@ public class FormPencarian extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String judul = keywordJudul.getText();
         ArrayList<Buku> listBuku = Perpustakaan.bukuProvider.selectBuku(judul);
-        display(listBuku);
+        if (listBuku.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Buku tidak terdaftar.", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            display(listBuku);
+        }
     }
 
     public void display(ArrayList<Buku> listBuku) {
