@@ -53,8 +53,8 @@ public class FormPeminjaman extends JFrame implements ActionListener {
         tombolKonfirmasi.setBounds(130, 300, 100, 25);
         panel.add(tombolKonfirmasi);
 
-        tombolBatal = new JButton("Batal"); 
-        tombolBatal.setBounds(250, 300, 100, 25); 
+        tombolBatal = new JButton("Batal");
+        tombolBatal.setBounds(250, 300, 100, 25);
         panel.add(tombolBatal);
 
         JLabel labelLama = new JLabel("Lama Peminjaman (hari):");
@@ -87,78 +87,63 @@ public class FormPeminjaman extends JFrame implements ActionListener {
         setSize(480, 580);
         setLocationRelativeTo(null);
 
-        tombolKonfirmasi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tombolKonfirmasiActionPerformed(e);
-            }
-        });
-
-        tombolBatal.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tombolBatalActionPerformed(e);
-            }
-        });
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String judul = judulBuku.getText();
-        ArrayList<Buku> listBuku = Perpustakaan.bukuProvider.selectBuku(judul);
-        display(listBuku);
-    }
-
-    private void tombolKonfirmasiActionPerformed(ActionEvent evt) {
-        int selectedRow = daftarBuku.getSelectedRow();
-        if (selectedRow != -1) {
-            String judulBuku = (String) tableModel.getValueAt(selectedRow, 0);
-            int lamaPinjam;
-            try {
-                lamaPinjam = Integer.parseInt(lama.getText());
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Masukkan angka untuk lama peminjaman.", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            Buku selectedBook = null;
-            for (Buku buku : Perpustakaan.bukuProvider.selectBuku(judulBuku)) {
-                if (buku.getJudul().equals(judulBuku)) {
-                    selectedBook = buku;
-                    break;
-                }
-            }
-
-            if (selectedBook != null) {
-                tambahBuku(selectedBook, lamaPinjam);
-            } else {
-                JOptionPane.showMessageDialog(this, "Buku tidak ditemukan.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Pilih buku yang akan dipinjam.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void tombolBatalActionPerformed(ActionEvent evt) {
-        int selectedRow = daftarPinjaman.getSelectedRow();
-        if (selectedRow != -1) {
-            String judulBuku = (String) daftarPinjaman.getValueAt(selectedRow, 0);
-            int lamaPinjam = (int) daftarPinjaman.getValueAt(selectedRow, 1);
-
-            // Cari buku yang sesuai di dalam daftar pinjaman
-            for (BukuDipinjam buku : book) {
-                if (buku.getBuku().getJudul().equals(judulBuku) && buku.getLamaPinjam() == lamaPinjam) {
-                    hapusBuku(buku);
+        if (e.getSource() == tombolCari) {
+            String judul = judulBuku.getText();
+            ArrayList<Buku> listBuku = Perpustakaan.bukuProvider.selectBuku(judul);
+            display(listBuku);
+        } else if (e.getSource() == tombolKonfirmasi) {
+            int selectedRow = daftarBuku.getSelectedRow();
+            if (selectedRow != -1) {
+                String judulBuku = (String) tableModel.getValueAt(selectedRow, 0);
+                int lamaPinjam;
+                try {
+                    lamaPinjam = Integer.parseInt(lama.getText());
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Masukkan angka untuk lama peminjaman.", "Error",
+                            JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+
+                Buku selectedBook = null;
+                for (Buku buku : Perpustakaan.bukuProvider.selectBuku(judulBuku)) {
+                    if (buku.getJudul().equals(judulBuku)) {
+                        selectedBook = buku;
+                        break;
+                    }
+                }
+
+                if (selectedBook != null) {
+                    tambahBuku(selectedBook, lamaPinjam);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Buku tidak ditemukan.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Pilih buku yang akan dipinjam.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
-            JOptionPane.showMessageDialog(this, "Buku tidak ditemukan dalam daftar pinjaman.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Pilih buku yang akan dibatalkan peminjamannya.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+        } else if (e.getSource() == tombolBatal) {
+            int selectedRow = daftarPinjaman.getSelectedRow();
+            if (selectedRow != -1) {
+                String judulBuku = (String) daftarPinjaman.getValueAt(selectedRow, 0);
+                int lamaPinjam = (int) daftarPinjaman.getValueAt(selectedRow, 1);
+
+                // Cari buku yang sesuai di dalam daftar pinjaman
+                for (BukuDipinjam buku : book) {
+                    if (buku.getBuku().getJudul().equals(judulBuku) && buku.getLamaPinjam() == lamaPinjam) {
+                        hapusBuku(buku);
+                        return;
+                    }
+                }
+                JOptionPane.showMessageDialog(this, "Buku tidak ditemukan dalam daftar pinjaman.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Pilih buku yang akan dibatalkan peminjamannya.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
