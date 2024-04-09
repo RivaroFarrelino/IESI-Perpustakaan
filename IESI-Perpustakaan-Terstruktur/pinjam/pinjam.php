@@ -25,9 +25,7 @@ switch ($fitur) {
     case 'read':
         default:
             read();
-            break;
-    case 'pengembalian':
-        echo "<a href='./return.php?fitur=return&idbuku=$row[0]&judul=$row[1]'>kembalikan</a>";        
+            break;       
 }
 
 ?>
