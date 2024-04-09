@@ -13,6 +13,9 @@ switch ($fitur) {
         $listbuku = cari($keyword);
         display($listbuku);
         break;
+    case 'pengembalian':
+        header('location:pinjam/return.php?fitur=read');
+        exit;    
 }
 ?>
     </body>

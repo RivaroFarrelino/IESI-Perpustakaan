@@ -3,6 +3,7 @@ include "read-cart.php";
 include "add-cart.php";
 include "delete-cart.php";
 include "save-cart.php";
+include "return-cart.php";
 
 $fitur = $_GET['fitur'];
 switch ($fitur) {
@@ -22,9 +23,11 @@ switch ($fitur) {
         header('location:pinjam.php?fitur=read');
         break;
     case 'read':
-    default:
-        read();
-        break;
+        default:
+            read();
+            break;
+    case 'pengembalian':
+        echo "<a href='./return.php?fitur=return&idbuku=$row[0]&judul=$row[1]'>kembalikan</a>";        
 }
 
 ?>
